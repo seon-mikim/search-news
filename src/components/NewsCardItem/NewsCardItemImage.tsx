@@ -1,9 +1,11 @@
-import React from 'react'
-
-const NewsCardItemImage = () => {
-	return (
-		<div>NewsCardItemImage</div>
-	)
+import React from 'react';
+interface NewsCardItemImageProps {
+	title:string
+  image: string;
 }
 
-export default NewsCardItemImage
+const NewsCardItemImage = ({ image, title }: NewsCardItemImageProps) => {
+	return <img src={image} alt={title } />;
+};
+
+export default NewsCardItemImage;

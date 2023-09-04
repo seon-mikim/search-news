@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const NewsCardItemPublishedAt = () => {
-	return (
-		<div>NewsCardItemPublishedAt</div>
-	)
+interface NewsCardItemPublishedAtProps {
+  publishedAt: string;
 }
 
-export default NewsCardItemPublishedAt
+const NewsCardItemPublishedAt = ({
+  publishedAt,
+}: NewsCardItemPublishedAtProps) => {
+  return <div>{publishedAt}</div>;
+};
+
+export default NewsCardItemPublishedAt;

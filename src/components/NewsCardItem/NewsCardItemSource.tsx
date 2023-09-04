@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const NewsCardItemSource = () => {
-	return (
-		<div>NewsCardItemSource</div>
-	)
+interface NewsCardItemSourceProps {
+  source: string;
 }
 
-export default NewsCardItemSource
+const NewsCardItemSource = ({ source }: NewsCardItemSourceProps) => {
+  return <div>{source}</div>;
+};
+
+export default NewsCardItemSource;

@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const NewsCardItemTitle = () => {
-	return (
-		<div>NewsCardItemTitle</div>
-	)
+interface NewsCardItemTitleProps {
+  title: string;
 }
 
-export default NewsCardItemTitle
+const NewsCardItemTitle = ({ title }: NewsCardItemTitleProps) => {
+  return <div>{title}</div>;
+};
+
+export default NewsCardItemTitle;
