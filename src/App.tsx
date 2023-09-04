@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
+import MainPage from '@pages/MainPage';
 
 function App() {
   return (
-    <div>안녕</div>
+    <MainPage/>
   );
 }
 

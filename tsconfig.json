@@ -3,17 +3,13 @@
     "target": "es5",
     "baseUrl": "./",
     "paths": {
-      "@components/*":["src/components/*"],
-      "@pages/*":["src/pages/*"],
-      "@utils/*":["src/utils/*"],
-      "@hooks/*":["src/hooks/*"],
-      "@redux/*":["src/redux/*"],
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@redux/*": ["src/redux/*"]
     },
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -28,7 +24,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
