@@ -14,16 +14,19 @@ interface NewCardItemProps {
 }
 const NewsCardItem = ({newsDataItem }: NewCardItemProps) => {
 	return (
-		<div>
-			<NewsCardItemTitle title={newsDataItem.title } />
-			<NewsCardItemDescription description={newsDataItem.description } />
-			<NewsCardItemAuthor author={newsDataItem.author } />
-			<NewsCardItemImage image={newsDataItem.urlToImage } />
-			<NewsCardItemPublishedAt publishedAt={newsDataItem.publishedAt } />
-			<NewsCardItemSource source={newsDataItem.source.name } />
-			<NewsCardItemUrl url={newsDataItem.url } />
-		</div>
-	)
+    <div>
+      <NewsCardItemTitle title={newsDataItem.title} />
+      <NewsCardItemDescription description={newsDataItem.description} />
+      <NewsCardItemAuthor author={newsDataItem.author} />
+      <NewsCardItemImage
+        image={newsDataItem.urlToImage}
+        title={newsDataItem.title}
+      />
+      <NewsCardItemPublishedAt publishedAt={newsDataItem.publishedAt} />
+      <NewsCardItemSource source={newsDataItem.source.name} />
+      <NewsCardItemUrl url={newsDataItem.url} />
+    </div>
+  );
 }
 
 export default NewsCardItem

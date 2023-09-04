@@ -5,7 +5,9 @@ import { NewsData } from 'src/interface/newsListData';
 
 const NewsCardList = () => {
 	const newsApiData = useGetNews();
-
+	if (!newsApiData) {
+	return <div>로딩중 입니다.</div>
+}
   return (
     <div>
       {newsApiData.articles &&
