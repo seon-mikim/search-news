@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-const NewsCardItemDescription = () => {
-	return (
-		<div>NewsCardItemDescription</div>
-	)
+interface NewsCardItemDescriptionProps {
+  description: string;
 }
+const NewsCardItemDescription = ({
+  description,
+}: NewsCardItemDescriptionProps) => {
+  return <div>{description}</div>;
+};
 
-export default NewsCardItemDescription
+export default NewsCardItemDescription;

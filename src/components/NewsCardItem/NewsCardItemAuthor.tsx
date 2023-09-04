@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-const NewsCardItemAuthor = () => {
-	return (
-		<div>NewsCardItemAuthor</div>
-	)
+interface NewsCardItemAuthorProps {
+  author: string;
 }
+const NewsCardItemAuthor = ({ author }: NewsCardItemAuthorProps) => {
+  return <div>{author}</div>;
+};
 
-export default NewsCardItemAuthor
+export default NewsCardItemAuthor;

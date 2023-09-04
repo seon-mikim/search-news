@@ -6,17 +6,18 @@ import NewsCardItemImage from './NewsCardItemImage'
 import NewsCardItemPublishedAt from './NewsCardItemPublishedAt'
 import NewsCardItemSource from './NewsCardItemSource'
 import NewsCardItemUrl from './NewsCardItemUrl'
+import { NewsData } from 'src/interface/newsListData'
 
-const NewsCardItem = () => {
+const NewsCardItem = ({newDataItem }: NewsData) => {
 	return (
 		<div>
-			<NewsCardItemTitle/>
-			<NewsCardItemDescription />
-			<NewsCardItemAuthor/>
-			<NewsCardItemImage />
-			<NewsCardItemPublishedAt />
-			<NewsCardItemSource />
-			<NewsCardItemUrl/>
+			<NewsCardItemTitle title={newDataItem.title } />
+			<NewsCardItemDescription description={newDataItem.description } />
+			<NewsCardItemAuthor author={newDataItem.author } />
+			<NewsCardItemImage image={newDataItem.image } />
+			<NewsCardItemPublishedAt publishedAt={newDataItem.publishedAt } />
+			<NewsCardItemSource source={newDataItem.source.name } />
+			<NewsCardItemUrl url={newDataItem.url } />
 		</div>
 	)
 }
