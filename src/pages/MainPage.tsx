@@ -1,7 +1,9 @@
+import NewsCardList from "@components/NewsCardList/NewsCardList"
+
 const MainPage = () => {
 
 	return (
-		<div>MainPage</div>
+		<NewsCardList/>
 	)
 }
 
