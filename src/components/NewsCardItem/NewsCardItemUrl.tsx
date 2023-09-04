@@ -1,8 +1,10 @@
 import React from 'react'
-
-const NewsCardItemUrl = () => {
+interface NewsCardItemUrlProps {
+	url: string
+}
+const NewsCardItemUrl = ({url }:NewsCardItemUrlProps) => {
 	return (
-		<div>NewsCardItemUrl</div>
+		<div>{url }</div>
 	)
 }
 

@@ -1,4 +1,4 @@
-interface NewsData {
+export interface NewsData {
 	author: string,
 	content: string,
 	description: string,
