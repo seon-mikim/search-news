@@ -1,5 +1,6 @@
 export interface NewsData {
 	author: string,
+	title: string,
 	content: string,
 	description: string,
 	publishedAt: string,
