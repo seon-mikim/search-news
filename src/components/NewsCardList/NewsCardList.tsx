@@ -5,9 +5,7 @@ import { NewsData } from 'src/interface/newsListData';
 
 const NewsCardList = () => {
 	const newsApiData = useGetNews();
-	if (newsApiData) {
-		
-	}
+
   return (
     <div>
       {newsApiData.articles &&
