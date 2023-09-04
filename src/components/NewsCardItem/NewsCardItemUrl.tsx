@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 interface NewsCardItemUrlProps {
-	url: string
+  url: string;
 }
-const NewsCardItemUrl = ({url }:NewsCardItemUrlProps) => {
-	return (
-		<div>{url }</div>
-	)
-}
+const NewsCardItemUrl = ({ url }: NewsCardItemUrlProps) => {
+  return <a href={url}>{url}</a>;
+};
 
-export default NewsCardItemUrl
+export default NewsCardItemUrl;
