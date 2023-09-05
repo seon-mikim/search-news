@@ -9,12 +9,12 @@ const NewsCardList = () => {
 	return <div>로딩중 입니다.</div>
 }
   return (
-    <div>
+    <ul>
       {newsApiData.articles &&
         newsApiData.articles.map((newsDataItem: NewsData) => (
           <NewsCardItem newsDataItem={newsDataItem} />
         ))}
-    </div>
+    </ul>
   );
 };
 
