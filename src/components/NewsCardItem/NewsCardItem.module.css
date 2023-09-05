@@ -4,9 +4,9 @@
   justify-content: center;
   text-align: start;
   height: 12rem;
-  border: 0.1rem solid #000;
+  border: 0.1rem solid #00000011;
   border-radius: 0.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   padding: 0.01rem 2rem;
   .card-item__wrap__img {
     width: 12rem;
