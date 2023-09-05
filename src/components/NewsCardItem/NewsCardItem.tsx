@@ -17,18 +17,24 @@ interface NewCardItemProps {
 const NewsCardItem = ({ newsDataItem }: NewCardItemProps) => {
   return (
     <NewsCartItemWrap className={classes['card-item']}>
-			<Layout className={classes['card-item__wrap'] }>
+      <Layout className={classes['card-item__wrap']}>
         <NewsCardItemImage
           image={newsDataItem.urlToImage}
           title={newsDataItem.title}
           className={classes['card-item__wrap__img']}
         />
       </Layout>
-			<Layout className={classes['card-item__info'] }>
-        <NewsCardItemTitle title={newsDataItem.title} />
-        <NewsCardItemDescription description={newsDataItem.description} />
+      <Layout className={classes['card-item__info']}>
+        <NewsCardItemTitle
+          className={classes['card-item__title']}
+          title={newsDataItem.title}
+        />
+        <NewsCardItemDescription
+          className={classes['card-item__description']}
+          description={newsDataItem.description}
+        />
         <NewsCardItemSource source={newsDataItem.source.name} />
-        <NewsCardItemUrl url={newsDataItem.url} />
+        {/* <NewsCardItemUrl url={newsDataItem.url} /> */}
         <NewsCardItemPublishedAt publishedAt={newsDataItem.publishedAt} />
         <NewsCardItemAuthor author={newsDataItem.author} />
       </Layout>
