@@ -7,9 +7,9 @@ const useGetNews = () => {
 
   const dispatch = useDispatch();
   const newsApiData = useSelector((state: RootState) => state.newsData);
-  
+  console.log(new Date());
   const fetchNewData = useCallback(async () => {
-    const getNewsData = await getNewsApi({ keyword: 'all', date: '' });
+    const getNewsData = await getNewsApi({ keyword: 'all', date: `${ new Date().toTimeString()}` });
     dispatch(newsData(getNewsData));
   }, [dispatch]);
   

@@ -5,8 +5,18 @@ interface NewsCardItemImageProps {
   className: string;
 }
 
-const NewsCardItemImage = ({ image, title, className }: NewsCardItemImageProps) => {
-	return <img className={className } src={image} alt={title } />;
+const NewsCardItemImage = ({
+  image,
+  title,
+  className,
+}: NewsCardItemImageProps) => {
+  return (
+    <img
+      src={image !== null ? image : '/images/no-image.svg'}
+      alt={title}
+      className={className}
+    />
+  );
 };
 
 export default NewsCardItemImage;

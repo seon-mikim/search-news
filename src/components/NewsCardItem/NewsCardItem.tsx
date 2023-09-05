@@ -17,26 +17,51 @@ interface NewCardItemProps {
 const NewsCardItem = ({ newsDataItem }: NewCardItemProps) => {
   return (
     <NewsCartItemWrap className={classes['card-item']}>
-      <Layout className={classes['card-item__wrap']}>
-        <NewsCardItemImage
-          image={newsDataItem.urlToImage}
-          title={newsDataItem.title}
-          className={classes['card-item__wrap__img']}
+      <NewsCardItemUrl
+        className={classes['card-item--active']}
+        url={newsDataItem.url}
+      >
+        <Layout className={classes['card-item__wrap']}>
+          <NewsCardItemImage
+            image={newsDataItem.urlToImage}
+            title={newsDataItem.title}
+            className={classes['card-item__wrap__img']}
+          />
+        </Layout>
+      </NewsCardItemUrl>
+      <Layout className={classes['card-item__news']}>
+        <NewsCardItemUrl
+          className={classes['card-item--active']}
+          url={newsDataItem.url}
+        >
+          <NewsCardItemTitle
+            className={classes['card-item__title']}
+            title={newsDataItem.title}
+          />
+        </NewsCardItemUrl>
+        <NewsCardItemUrl
+          className={classes['card-item--active']}
+          url={newsDataItem.url}
+        >
+          <NewsCardItemDescription
+            className={classes['card-item__description']}
+            description={newsDataItem.description}
+          />
+        </NewsCardItemUrl>
+        <Layout className={classes['card-item__info']}>
+          <NewsCardItemSource
+            className={classes['card-item__source']}
+            source={newsDataItem.source.name}
+          />
+          <NewsCardItemAuthor
+            className={classes['card-item__author']}
+            author={newsDataItem.author}
+          />
+        </Layout>
+        <NewsCardItemPublishedAt
+          className={classes['card-item__published-at']}
+          publishedAt={newsDataItem.publishedAt}
         />
-      </Layout>
-      <Layout className={classes['card-item__info']}>
-        <NewsCardItemTitle
-          className={classes['card-item__title']}
-          title={newsDataItem.title}
-        />
-        <NewsCardItemDescription
-          className={classes['card-item__description']}
-          description={newsDataItem.description}
-        />
-        <NewsCardItemSource source={newsDataItem.source.name} />
-        {/* <NewsCardItemUrl url={newsDataItem.url} /> */}
-        <NewsCardItemPublishedAt publishedAt={newsDataItem.publishedAt} />
-        <NewsCardItemAuthor author={newsDataItem.author} />
       </Layout>
     </NewsCartItemWrap>
   );

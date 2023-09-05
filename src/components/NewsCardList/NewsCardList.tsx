@@ -9,7 +9,7 @@ const NewsCardList = () => {
     if (newsApiData) {
       return newsApiData.articles.filter(
         (newsApiDataItem: NewsData) =>
-          newsApiDataItem.urlToImage !== '[Removed]'
+          newsApiDataItem.title !== '[Removed]'
       );
     }
   }, [newsApiData]);
@@ -20,8 +20,8 @@ const NewsCardList = () => {
   return (
     <ul className={classes['news-card-list']}>
       {filterRemovedNewsData &&
-        filterRemovedNewsData.map((newsDataItem: NewsData) => (
-          <NewsCardItem newsDataItem={newsDataItem} />
+        filterRemovedNewsData.map((newsDataItem: NewsData, index:number) => (
+          <NewsCardItem key={index+1 } newsDataItem={newsDataItem} />
         ))}
     </ul>
   );
