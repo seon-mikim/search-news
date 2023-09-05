@@ -1,0 +1,25 @@
+.card-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: start;
+	height: 15rem;
+  border: 0.1rem solid #000;
+	border-radius: 0.2rem;
+  margin-bottom: 2rem;
+	.card-item__wrap__img {
+		width:12rem;
+		height: 8rem;
+		object-fit: cover;
+		img {
+     width: 100%;
+		 height: 100%;
+		}
+	}
+
+	.card-item__info {
+		margin-left: 2rem;
+		width: 30rem;
+		height: 8rem;
+	}
+}
