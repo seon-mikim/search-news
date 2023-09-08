@@ -1,0 +1,26 @@
+.skeleton-card-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: start;
+  height: 12rem;
+  border: 0.1rem solid #00000011;
+  border-radius: 0.2rem;
+  margin-bottom: 0.5rem;
+  padding: 0.01rem 2rem;
+  .skeleton-card__img-wrap {
+    width: 8rem;
+    height: 6rem;
+    object-fit: cover;
+  }
+  .skeleton-card__news-wrap{
+    margin-left: 2rem;
+    width: 30rem;
+    height: 6rem;
+    .skeleton-card__secure {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

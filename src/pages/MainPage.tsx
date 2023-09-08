@@ -1,10 +1,11 @@
-import NewsCardList from "@components/NewsCardList/NewsCardList"
+import NewsCardList from '@components/NewsCardList/NewsCardList';
 
 const MainPage = () => {
+  return (
+    <>
+      <NewsCardList />;
+    </>
+  );
+};
 
-	return (
-		<NewsCardList/>
-	)
-}
-
-export default MainPage
+export default MainPage;
