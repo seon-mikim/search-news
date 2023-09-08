@@ -10,7 +10,7 @@ const NewsCardItemPublishedAt = ({
   publishedAt, className
 }: NewsCardItemPublishedAtProps) => {
   const getLocalDate = getTimeDifferenceString(publishedAt);
-  console.log(getLocalDate)
+ 
   return <span className={className }>{getLocalDate}</span>;
 };
 

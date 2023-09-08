@@ -8,7 +8,7 @@ import useIntersectionObserver from '@hooks/useIntersectionObserver';
 const NewsCardList = () => {
   const { newsData, loading, updateDynamicParams, params } = useGetNews();
   const fetchMoreNews = useCallback(() => {
-    updateDynamicParams({ pageSize: (params.pageSize ?? 4) + 4 });
+    updateDynamicParams({ page: (params.page ?? 1) + 1 });
     
   }, [updateDynamicParams, params]);
   
@@ -22,22 +22,18 @@ const NewsCardList = () => {
     }, [newsData]);
 
   return (
-
-      <ul className={classes['news-card-list']}>
-        {filterRemovedNewsData &&
-          filterRemovedNewsData.map(
-            (newsDataItem: NewsListData, index: number) => (
-              <NewsCardItem key={index + 1} newsDataItem={newsDataItem} />
-              )
-              )}
-              {loading
-                ? new Array(4).fill(1).map((_, i) => <SkeletonNewsCardItem key={i} />)
-                : ''}
-        {!loading && (
-          <div ref={setObservationTarget}></div>
+    <ul className={classes['news-card-list']}>
+      {filterRemovedNewsData &&
+        filterRemovedNewsData.map(
+          (newsDataItem: NewsListData, index: number) => (
+            <NewsCardItem key={index + 1} newsDataItem={newsDataItem} />
+          )
         )}
-      </ul>
-
+      {loading
+        ? new Array(4).fill(1).map((_, i) => <SkeletonNewsCardItem key={i} />)
+        : ''}
+      {!loading && <li ref={setObservationTarget} style={{ height: "40px", width: "100%"}}></li>}
+    </ul>
   );
 };
 
