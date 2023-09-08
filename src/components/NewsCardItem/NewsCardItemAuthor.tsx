@@ -2,9 +2,10 @@ import React from 'react';
 
 interface NewsCardItemAuthorProps {
   author: string;
+  className: string;
 }
-const NewsCardItemAuthor = ({ author }: NewsCardItemAuthorProps) => {
-  return <div>{author}</div>;
+const NewsCardItemAuthor = ({ author, className }: NewsCardItemAuthorProps) => {
+  return <div className={className}>{author}</div>;
 };
 
 export default NewsCardItemAuthor;
