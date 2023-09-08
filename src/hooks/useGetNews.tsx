@@ -1,27 +1,38 @@
-import { newsData } from '@redux/actions';
-import { RootState } from '@redux/reducers';
-import getNewsApi from '@utils/api/getNewsApi';
-import { useEffect, useCallback } from 'react';
+import { getNewsList } from '@redux/news/newsListSlice';
+import { AppDispatch, RootState } from '@redux/store';
+
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import useDynamicParams from './useDynamicParams';
+import NewsApi from 'src/interface/newApiInterface';
+
 const useGetNews = () => {
-  const dispatch = useDispatch();
-  const newsApiData = useSelector((state: RootState) => state.newsData);
-  console.log(new Date());
-  const fetchNewData = useCallback(async () => {
-    const getNewsData = await getNewsApi({
-      keyword: 'all',
-      date: `${new Date().toTimeString()}`,
-      page: 1,
-      pageSize: 10,
-    });
-    dispatch(newsData(getNewsData));
-  }, [dispatch]);
+  const initialParams = {
+    keyword: 'all',
+    date: new Date().toString(),
+    page: 1,
+    pageSize: 4,
+  };
+  const [params, updateDynamicParams] =
+    useDynamicParams<typeof initialParams>();
+  const dispatch: AppDispatch = useDispatch();
+  const { entities: newsData, loading } = useSelector(
+    (state: RootState) => state.news
+  );
+
+  const getNewsData = useCallback(async () => {
+    const combinedParams = { ...initialParams, ...params };
+    
+    dispatch(getNewsList(combinedParams));
+  }, [dispatch, params]);
 
   useEffect(() => {
-    fetchNewData();
-  }, [fetchNewData]);
+    console.log('Current Params:', params);
 
-  return newsApiData;
+    getNewsData();
+  }, [getNewsData, params]);
+
+  return { newsData, loading, updateDynamicParams, params };
 };
 
 export default useGetNews;

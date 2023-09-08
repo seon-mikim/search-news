@@ -1,6 +1,17 @@
-import { applyMiddleware, createStore } from "redux";
-import rootReducer from "./reducers";
-import thunk from "redux-thunk";
-const store = createStore(rootReducer, applyMiddleware(thunk))
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import newsReducer from '../redux/news/newsListSlice';
 
-export default store
+export const store = configureStore({
+  reducer: {
+    news: newsReducer,
+  },
+});
+
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;

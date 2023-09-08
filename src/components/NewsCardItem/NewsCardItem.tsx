@@ -6,13 +6,13 @@ import NewsCardItemImage from './NewsCardItemImage';
 import NewsCardItemPublishedAt from './NewsCardItemPublishedAt';
 import NewsCardItemSource from './NewsCardItemSource';
 import NewsCardItemUrl from './NewsCardItemUrl';
-import { NewsData } from 'src/interface/newsListData';
+import {  NewsListData } from 'src/interface/newsListData';
 import NewsCartItemWrap from './NewsCartItemWrap';
 import classes from './NewsCardItem.module.css';
 import Layout from '@components/ui/Layout/Layout';
 
 interface NewCardItemProps {
-  newsDataItem: NewsData;
+  newsDataItem: NewsListData;
 }
 const NewsCardItem = ({ newsDataItem }: NewCardItemProps) => {
   return (
