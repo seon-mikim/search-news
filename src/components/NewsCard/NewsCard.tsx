@@ -1,9 +1,9 @@
 import React from 'react';
 import NewsCardTextualContent from './NewsCardTextualContent';
-import NewsCardItemImage from './NewsCardItemImage';
-import NewsCardItemUrl from './NewsCardItemUrl';
+import NewsCardImage from './NewsCardImage';
+import NewsCardUrl from './NewsCardUrl';
 import { NewsListData } from 'src/interface/newsListData';
-import NewsCartItemWrap from './NewsCartItemWrap';
+import NewsCartWrap from './NewsCartWrap';
 import classes from './NewsCardItem.module.css';
 import Layout from '@components/ui/Layout/Layout';
 import NewsCardMetaText from './NewsCardMetaText';
@@ -14,22 +14,22 @@ interface NewCardProps {
 const NewsCard = ({ newsDataItem }: NewCardProps) => {
   
   return (
-    <NewsCartItemWrap className={classes['card-item']}>
-      <NewsCardItemUrl
+    <NewsCartWrap className={classes['card-item']}>
+      <NewsCardUrl
         className={classes['card-item--active']}
         url={newsDataItem.url}
       >
         <Layout className={classes['card-item__wrap']}>
-          <NewsCardItemImage
+          <NewsCardImage
             image={newsDataItem.urlToImage}
             title={newsDataItem.title}
             className={classes['card-item__wrap__img']}
           />
         </Layout>
-      </NewsCardItemUrl>
+      </NewsCardUrl>
 
       <Layout className={classes['card-item__news']}>
-        <NewsCardItemUrl
+        <NewsCardUrl
           className={classes['card-item--active']}
           url={newsDataItem.url}
         >
@@ -37,9 +37,9 @@ const NewsCard = ({ newsDataItem }: NewCardProps) => {
             className={classes['card-item__title']}
             text={newsDataItem.title}
           />
-        </NewsCardItemUrl>
+        </NewsCardUrl>
 
-        <NewsCardItemUrl
+        <NewsCardUrl
           className={classes['card-item--active']}
           url={newsDataItem.url}
         >
@@ -47,7 +47,7 @@ const NewsCard = ({ newsDataItem }: NewCardProps) => {
             className={classes['card-item__description']}
             text={newsDataItem.description}
           />
-        </NewsCardItemUrl>
+        </NewsCardUrl>
 
         <Layout className={classes['card-item__info']}>
           <NewsCardTextualContent
@@ -65,7 +65,7 @@ const NewsCard = ({ newsDataItem }: NewCardProps) => {
           text={newsDataItem.publishedAt}
         />
       </Layout>
-    </NewsCartItemWrap>
+    </NewsCartWrap>
   );
 };
 

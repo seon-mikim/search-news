@@ -1,11 +1,11 @@
 import React from 'react';
-interface NewsCardItemUrlProps {
+interface NewsCardUrlProps {
   url: string;
   className: string,
   children: React.ReactNode
 }
-const NewsCardItemUrl = ({ url,className, children }: NewsCardItemUrlProps) => {
+const NewsCardUrl = ({ url,className, children }: NewsCardUrlProps) => {
   return <a className={className } href={url}>{children}</a>;
 };
 
-export default NewsCardItemUrl;
+export default NewsCardUrl;

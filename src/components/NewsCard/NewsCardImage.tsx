@@ -1,15 +1,15 @@
 import React from 'react';
-interface NewsCardItemImageProps {
+interface NewsCardImageProps {
   title: string;
   image: string;
   className: string;
 }
 
-const NewsCardItemImage = ({
+const NewsCardImage = ({
   image,
   title,
   className,
-}: NewsCardItemImageProps) => {
+}: NewsCardImageProps) => {
   return (
     <img
       src={image !== null ? image : '/images/no-image.svg'}
@@ -19,4 +19,4 @@ const NewsCardItemImage = ({
   );
 };
 
-export default NewsCardItemImage;
+export default NewsCardImage;
