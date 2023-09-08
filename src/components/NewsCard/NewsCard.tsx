@@ -1,20 +1,18 @@
 import React from 'react';
-import NewsCardItemTitle from './NewsCardItemTitle';
-import NewsCardItemDescription from './NewsCardItemDescription';
-import NewsCardItemAuthor from './NewsCardItemAuthor';
+import NewsCardTextualContent from './NewsCardTextualContent';
 import NewsCardItemImage from './NewsCardItemImage';
-import NewsCardItemPublishedAt from './NewsCardItemPublishedAt';
-import NewsCardItemSource from './NewsCardItemSource';
 import NewsCardItemUrl from './NewsCardItemUrl';
-import {  NewsListData } from 'src/interface/newsListData';
+import { NewsListData } from 'src/interface/newsListData';
 import NewsCartItemWrap from './NewsCartItemWrap';
 import classes from './NewsCardItem.module.css';
 import Layout from '@components/ui/Layout/Layout';
+import NewsCardMetaText from './NewsCardMetaText';
 
-interface NewCardItemProps {
+interface NewCardProps {
   newsDataItem: NewsListData;
 }
-const NewsCardItem = ({ newsDataItem }: NewCardItemProps) => {
+const NewsCard = ({ newsDataItem }: NewCardProps) => {
+  
   return (
     <NewsCartItemWrap className={classes['card-item']}>
       <NewsCardItemUrl
@@ -29,42 +27,46 @@ const NewsCardItem = ({ newsDataItem }: NewCardItemProps) => {
           />
         </Layout>
       </NewsCardItemUrl>
+
       <Layout className={classes['card-item__news']}>
         <NewsCardItemUrl
           className={classes['card-item--active']}
           url={newsDataItem.url}
         >
-          <NewsCardItemTitle
+          <NewsCardTextualContent
             className={classes['card-item__title']}
-            title={newsDataItem.title}
+            text={newsDataItem.title}
           />
         </NewsCardItemUrl>
+
         <NewsCardItemUrl
           className={classes['card-item--active']}
           url={newsDataItem.url}
         >
-          <NewsCardItemDescription
+          <NewsCardTextualContent
             className={classes['card-item__description']}
-            description={newsDataItem.description}
+            text={newsDataItem.description}
           />
         </NewsCardItemUrl>
+
         <Layout className={classes['card-item__info']}>
-          <NewsCardItemSource
+          <NewsCardTextualContent
             className={classes['card-item__source']}
-            source={newsDataItem.source.name}
+            text={newsDataItem.source.name}
           />
-          <NewsCardItemAuthor
+          <NewsCardMetaText
             className={classes['card-item__author']}
-            author={newsDataItem.author}
+            text={newsDataItem.author}
           />
         </Layout>
-        <NewsCardItemPublishedAt
+
+        <NewsCardMetaText
           className={classes['card-item__published-at']}
-          publishedAt={newsDataItem.publishedAt}
+          text={newsDataItem.publishedAt}
         />
       </Layout>
     </NewsCartItemWrap>
   );
 };
 
-export default NewsCardItem;
+export default NewsCard;
