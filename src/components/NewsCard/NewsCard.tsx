@@ -1,18 +1,19 @@
-import React from 'react';
-import NewsCardTextualContent from './NewsCardTextualContent';
-import NewsCardImage from './NewsCardImage';
-import NewsCardUrl from './NewsCardUrl';
-import { NewsListData } from 'src/interface/newsListData';
-import NewsCartWrap from './NewsCartWrap';
-import classes from './NewsCardItem.module.css';
+import {
+  NewsCardUrl,
+  NewsCartWrap,
+  NewsCardImage,
+  NewsCardMetaText,
+  NewsCardTextualContent,
+} from '@components/NewsCard'
+import { NewsListData } from '@interface/newsListData';
+import classes from './NewsCard.module.css';
 import Layout from '@components/ui/Layout/Layout';
-import NewsCardMetaText from './NewsCardMetaText';
 
 interface NewCardProps {
   newsDataItem: NewsListData;
 }
 const NewsCard = ({ newsDataItem }: NewCardProps) => {
-  
+   console.log(newsDataItem.publishedAt)
   return (
     <NewsCartWrap className={classes['card-item']}>
       <NewsCardUrl
@@ -27,7 +28,6 @@ const NewsCard = ({ newsDataItem }: NewCardProps) => {
           />
         </Layout>
       </NewsCardUrl>
-
       <Layout className={classes['card-item__news']}>
         <NewsCardUrl
           className={classes['card-item--active']}
@@ -38,7 +38,6 @@ const NewsCard = ({ newsDataItem }: NewCardProps) => {
             text={newsDataItem.title}
           />
         </NewsCardUrl>
-
         <NewsCardUrl
           className={classes['card-item--active']}
           url={newsDataItem.url}
@@ -48,7 +47,6 @@ const NewsCard = ({ newsDataItem }: NewCardProps) => {
             text={newsDataItem.description}
           />
         </NewsCardUrl>
-
         <Layout className={classes['card-item__info']}>
           <NewsCardTextualContent
             className={classes['card-item__source']}
@@ -59,11 +57,10 @@ const NewsCard = ({ newsDataItem }: NewCardProps) => {
             text={newsDataItem.author}
           />
         </Layout>
-
-        <NewsCardMetaText
-          className={classes['card-item__published-at']}
-          text={newsDataItem.publishedAt}
-        />
+          <NewsCardMetaText
+            className={classes['card-item__published-at']}
+            text={newsDataItem.publishedAt}
+          />
       </Layout>
     </NewsCartWrap>
   );

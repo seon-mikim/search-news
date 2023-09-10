@@ -1,36 +1,32 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 
+export type IntersectHandler = (
+  entry: IntersectionObserverEntry,
+  observer: IntersectionObserver
+) => void;
 
-const useIntersectionObserver = (callback: () => void) => {
-
-  const [observationTarget, setObservationTarget] =
-    useState<HTMLLIElement | null>(null);
-  const observer = useRef(
-    new IntersectionObserver(
-      ([entry]) => {
-     console.log("Is intersecting:", entry.isIntersecting); // 로그 추가
-        if (!entry.isIntersecting) return;
-				console.log("Callback is about to be called"); // 로그 추가
-				callback()
-			},
-      { threshold: 1 }
-    )
+const useIntersectionObserver = (
+  onIntersect: IntersectHandler,
+  options?: IntersectionObserverInit
+) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const callback = useCallback(
+    (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) onIntersect(entry, observer);
+      });
+    },
+    [onIntersect]
   );
 
-  useEffect(() => {
-    const currentTarget = observationTarget;
-		const currentObserver = observer.current;
-		 if (currentTarget) {
-       currentObserver.observe(currentTarget);
-     }
+    useEffect(() => {
+      if (!ref.current) return;
+      const observer = new IntersectionObserver(callback, options);
+      observer.observe(ref.current);
+      return () => observer.disconnect();
+    }, [ref, options, callback]);
 
-    return () => {
-      if (currentTarget) {
-        currentObserver.unobserve(currentTarget);
-      }
-    };
-  }, [observationTarget]);
-  return (element: HTMLLIElement | null) => setObservationTarget(element);
+    return ref;
 };
 
 export default useIntersectionObserver;

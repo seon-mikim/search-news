@@ -1,20 +1,33 @@
-import NewsCard from '@components/NewsCard/NewsCard';
-import useGetNews from '@hooks/useGetNews';
-import { useMemo, useCallback } from 'react';
-import { NewsListData } from 'src/interface/newsListData';
+import { useMemo, useCallback, useRef } from 'react';
+import { NewsCard } from '@components/NewsCard';
+import { NewsListData } from '@interface/newsListData';
 import classes from './NewsCardList.module.css';
 import SkeletonNewsCardItem from '@components/SkeletonNewsCardItem/SkeletonNewsCardItem';
+import useGetNews from '@hooks/useGetNews';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
-const NewsCardList = () => {
-  const { newsData, loading, updateDynamicParams, params } = useGetNews();
-  const fetchMoreNews = useCallback(() => {
-    updateDynamicParams({ page: (params.page ?? 1) + 1 });
-  }, [updateDynamicParams, params]);
+import { useDispatch } from 'react-redux';
+import { getNewsList } from '@redux/news/newsListSlice';
+import { AppDispatch } from '@redux/store';
 
-  const setObservationTarget = useIntersectionObserver(fetchMoreNews);
+const NewsCardList = () => {
+  const { newsData, loading } = useGetNews();
+  const dispatch = useDispatch<AppDispatch>();
+  const pageRef = useRef(1);
+
+  const ref = useIntersectionObserver(
+    async (entry, observer) => {
+      observer.unobserve(entry.target);
+      pageRef.current += 1;
+      if (pageRef.current > 1) {
+        dispatch(getNewsList({ trigger: 'scroll', page: pageRef.current }));
+      }
+    },
+    { root: null, rootMargin: '0px', threshold: 1 }
+  );
+
   const filterRemovedNewsData = useMemo(() => {
-    if (newsData) {
-      return newsData.articles.filter(
+    if (newsData.length !== 0 ) {
+      return newsData.filter(
         (newsApiDataItem: NewsListData) => newsApiDataItem.title !== '[Removed]'
       );
     }
@@ -22,20 +35,14 @@ const NewsCardList = () => {
 
   return (
     <ul className={classes['news-card-list']}>
-      {filterRemovedNewsData &&
-        filterRemovedNewsData.map(
-          (newsDataItem: NewsListData, index: number) => (
-            <NewsCard key={index + 1} newsDataItem={newsDataItem} />
-          )
-        )}
+      {filterRemovedNewsData?.map((newsDataItem: NewsListData) => (
+        <NewsCard key={newsDataItem.source.name} newsDataItem={newsDataItem} />
+      ))}
       {loading
         ? new Array(4).fill(1).map((_, i) => <SkeletonNewsCardItem key={i} />)
         : ''}
       {!loading && (
-        <li
-          ref={setObservationTarget}
-          style={{ height: '40px', width: '100%' }}
-        ></li>
+        <div ref={ref} style={{ height: '100px', width: '100%' }}></div>
       )}
     </ul>
   );

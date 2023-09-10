@@ -5,11 +5,7 @@ interface NewsCardImageProps {
   className: string;
 }
 
-const NewsCardImage = ({
-  image,
-  title,
-  className,
-}: NewsCardImageProps) => {
+const NewsCardImage = ({ image, title, className }: NewsCardImageProps) => {
   return (
     <img
       src={image !== null ? image : '/images/no-image.svg'}

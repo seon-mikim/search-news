@@ -11,7 +11,7 @@ const useGetNews = () => {
     keyword: 'all',
     date: new Date().toString(),
     page: 1,
-    pageSize: 8,
+    pageSize: 4,
   };
   const [params, updateDynamicParams] =
     useDynamicParams<typeof initialParams>(initialParams);
@@ -27,6 +27,7 @@ const useGetNews = () => {
   }, [dispatch, params]);
 
   useEffect(() => {
+    console.log('Initial Params:', initialParams);
     console.log('Current Params:', params);
 
     getNewsData();
