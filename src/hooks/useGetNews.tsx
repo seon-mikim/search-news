@@ -14,7 +14,7 @@ const useGetNews = () => {
     pageSize: 4,
   };
   const [params, updateDynamicParams] =
-    useDynamicParams<typeof initialParams>();
+    useDynamicParams<typeof initialParams>(initialParams);
   const dispatch: AppDispatch = useDispatch();
   const { entities: newsData, loading } = useSelector(
     (state: RootState) => state.news
@@ -22,11 +22,12 @@ const useGetNews = () => {
 
   const getNewsData = useCallback(async () => {
     const combinedParams = { ...initialParams, ...params };
-    
+
     dispatch(getNewsList(combinedParams));
   }, [dispatch, params]);
 
   useEffect(() => {
+    console.log('Initial Params:', initialParams);
     console.log('Current Params:', params);
 
     getNewsData();
