@@ -3,12 +3,14 @@ import { NewsData } from '@interface/newsListData';
 import getNewsApi from '@utils/api/getNewsApi';
 import NewsApi from '@interface/newApiInterface';
 import { triggerAsyncId } from 'async_hooks';
+import { stat } from 'fs';
 
 export interface NewsListState {
   entities: NewsData['articles'];
   loading: boolean;
   error: null;
   lastFetchTrigger?: string | null;
+  params: {keyword?: string |null, date?: string|null}
 }
 
 const initialState: NewsListState = {
@@ -16,6 +18,7 @@ const initialState: NewsListState = {
   loading: false,
   error: null,
   lastFetchTrigger: null,
+  params: { keyword: null, date: null },
 };
 
 export const getNewsList = createAsyncThunk<NewsData['articles'], NewsApi>(
@@ -32,7 +35,11 @@ export const newsListSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getNewsList.pending, (state, action) => {
-      const { trigger } = action.meta.arg;
+      console.log()
+      const { trigger, keyword, date } = action.meta.arg;
+      
+      state.params.keyword = keyword
+      state.params.date = date
       state.lastFetchTrigger = trigger;
       state.loading = true;
     });

@@ -5,13 +5,16 @@ import classes from './NewsCardList.module.css';
 import SkeletonNewsCardItem from '@components/SkeletonNewsCardItem/SkeletonNewsCardItem';
 import useGetNews from '@hooks/useGetNews';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getNewsList } from '@redux/news/newsListSlice';
-import { AppDispatch } from '@redux/store';
+import { AppDispatch, RootState } from '@redux/store';
+
 
 const NewsCardList = () => {
   const { newsData, loading } = useGetNews();
   const dispatch = useDispatch<AppDispatch>();
+  const { params } = useSelector((state: RootState) => state.news);
+
   const pageRef = useRef(1);
 
   const ref = useIntersectionObserver(
@@ -19,7 +22,7 @@ const NewsCardList = () => {
       observer.unobserve(entry.target);
       pageRef.current += 1;
       if (pageRef.current > 1) {
-        dispatch(getNewsList({ trigger: 'scroll', page: pageRef.current }));
+        dispatch(getNewsList({ trigger: 'scroll', page: pageRef.current, ...params }));
       }
     },
     { root: null, rootMargin: '0px', threshold: 1 }

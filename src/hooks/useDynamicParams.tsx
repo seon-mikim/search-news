@@ -5,9 +5,9 @@ const useDynamicParams = <T extends object>(initialParams?:Partial <T> ) => {
 
 	const updateDynamicParams = useCallback((newParams: Partial<T>) => {
 		setParams((prevParams) => ({...prevParams, ...newParams}))
-	}, [])
+	}, [params])
 
-	return [params, updateDynamicParams] as const 
+	return [params,updateDynamicParams] as const 
 }
 
 export default useDynamicParams;

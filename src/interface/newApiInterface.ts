@@ -1,6 +1,6 @@
 interface NewsApi {
-  keyword?: string;
-  date?: string;
+  keyword?: string|null;
+  date?: string|null;
   page?: number;
   pageSize?: number;
   trigger?: string;

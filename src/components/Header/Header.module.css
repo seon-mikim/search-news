@@ -1,0 +1,61 @@
+.form {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  .form__search-input-wrap {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+    color: rgba(64, 181, 140, 0.603);
+    width: 28rem;
+    border: 0.15rem solid rgba(64, 181, 140, 0.603);
+    border-radius: 2rem;
+    > input {
+      border: 0.5rem solid transparent;
+      border-radius: 2rem;
+      margin-left: 3rem;
+      height: 1.5rem;
+      width: 130rem;
+    }
+    :focus {
+      outline: 0.5rem solid transparent;
+    }
+  }
+  .form__search-input-wrap:focus-within {
+    box-shadow: 0 0 10px #a8e9b5;
+  }
+  .button {
+    position: absolute;
+    height: 4rem;
+    width: 1.8rem;
+    left: 15rem;
+    top: 0.6rem;
+    border: 0.1rem solid transparent;
+    background-color: transparent;
+    background-image: url('/public/images/search.svg');
+    background-repeat: no-repeat;
+  }
+  .form__input-date__wrap {
+		border: 0.15rem solid rgba(64, 181, 140, 0.603);
+		border-radius: 3rem;
+    > input[type='date'] {
+      background-color: #fefefe;
+			width: 9rem;
+			border: 0.15rem solid transparent;
+			border-radius: 3rem;
+			padding: 0.6rem 0.5rem;
+    }
+    > input[type='date']::before {
+      content: attr(placeholder);
+			color: #7e7b7b;
+			text-align: center;
+      width: 100%;
+      height: 100%;
+    }
+    > input[type='date']:focus{
+      outline: 0.1rem solid transparent;
+    }
+  }
+}

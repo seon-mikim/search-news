@@ -16,13 +16,13 @@ const useGetNews = () => {
   const [params, updateDynamicParams] =
     useDynamicParams<typeof initialParams>(initialParams);
   const dispatch: AppDispatch = useDispatch();
-  const { entities: newsData, loading } = useSelector(
+  const { entities: newsData, loading, params: newParams } = useSelector(
     (state: RootState) => state.news
   );
 
   const getNewsData = useCallback(async () => {
-    const combinedParams = { ...initialParams, ...params };
-
+    const combinedParams = { ...initialParams, ...params};
+  console.log(params)
     dispatch(getNewsList(combinedParams));
   }, [dispatch, params]);
 
@@ -33,7 +33,7 @@ const useGetNews = () => {
     getNewsData();
   }, [getNewsData, params]);
 
-  return { newsData, loading, updateDynamicParams, params };
+  return { newsData, loading, updateDynamicParams, params , newParams};
 };
 
 export default useGetNews;
