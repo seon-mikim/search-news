@@ -1,8 +1,8 @@
-import React from 'react'
+import HeaderForm from './HeaderForm'
 
 const SearchBar = () => {
 	return (
-		<div>SearchBar</div>
+		<div><HeaderForm/></div>
 	)
 }
 
