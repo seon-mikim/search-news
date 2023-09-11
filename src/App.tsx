@@ -1,11 +1,8 @@
-import React from 'react';
 
-import MainPage from '@pages/MainPage';
+import Router from './router/Router';
 
 function App() {
-  return (
-    <MainPage/>
-  );
+  return Router;
 }
 
 export default App;
