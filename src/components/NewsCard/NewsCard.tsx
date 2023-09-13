@@ -13,7 +13,7 @@ interface NewCardProps {
   newsDataItem: NewsListData;
 }
 const NewsCard = ({ newsDataItem }: NewCardProps) => {
-   console.log(newsDataItem.publishedAt)
+
   return (
     <NewsCartWrap className={classes['card-item']}>
       <NewsCardUrl

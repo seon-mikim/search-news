@@ -10,8 +10,12 @@ const getNewsApi = async (params: NewsApi) => {
   try {
     const response = await fetch(
       `${process.env.REACT_APP_API}?q=${keyword}&from=${date}&sortBy=publishedAt&page=${page}&language=en&pageSize=${pageSize}&apiKey=${process.env.REACT_APP_API_KEY}`
-    );
-    const responseData = await response.json();
+      );
+      const responseData = await response.json();
+    if (!response.ok) {
+      throw new Error(responseData.message)
+    }
+    console.log(responseData)
     return responseData.articles;
   } catch (err) {
     console.error(err);

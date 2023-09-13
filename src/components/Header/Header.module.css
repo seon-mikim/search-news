@@ -3,59 +3,123 @@
   position: relative;
   align-items: center;
   justify-content: center;
-  margin: 2rem auto;
-  .form__search-input-wrap {
-    display: flex;
+  width: 120rem;
+  margin: 2rem 0;
+}
+
+.input-alert__wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__search-input-wrap {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin-right: 3rem;
+  color: rgba(64, 181, 140, 0.603);
+  width: 28rem;
+  border: 0.15rem solid rgba(64, 181, 140, 0.603);
+  border-radius: 2rem;
+  position: relative;
+}
+
+.form__search-input-wrap > input {
+  border: 0.5rem solid transparent;
+  width: 20rem;
+}
+
+.form__search-input-wrap > input::placeholder {
+  text-align: match-parent;
+}
+
+.form__search-input-wrap:focus-within {
+  box-shadow: 0 0 10px #a8e9b5;
+}
+
+.search-input__alert {
+  position: absolute;
+  font-size: 14px;
+  color: rgb(238, 88, 88);
+  top: 3rem;
+  left: 3rem;
+}
+
+.search-input__date-alert {
+  position: absolute;
+  color: rgb(238, 88, 88);
+  top: 2.5rem;
+  left: 2rem;
+}
+
+.button {
+  position: absolute;
+  top: 7%;
+  right: 10px;
+  height: 1.7rem;
+  width: 1.7rem;
+  border: 0.1rem solid transparent;
+  background-color: transparent;
+  background-image: url('/public/images/search.svg');
+  background-repeat: no-repeat;
+}
+
+.form__input-date__wrap {
+  border: 0.15rem solid rgba(64, 181, 140, 0.603);
+  border-radius: 3rem;
+  height: 2.5rem;
+  width: 9rem;
+}
+
+.form__input-date__wrap > input[type='date'] {
+  background-color: #fefefe;
+  margin-left: 1rem;
+  width: 7rem;
+  height: 2rem;
+  border: 0.15rem solid transparent;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .form {
+    position: relative;
+    flex-direction: column;
     align-items: center;
-    margin-right: 2rem;
-    color: rgba(64, 181, 140, 0.603);
-    width: 28rem;
-    border: 0.15rem solid rgba(64, 181, 140, 0.603);
-    border-radius: 2rem;
-    > input {
-      border: 0.5rem solid transparent;
-      border-radius: 2rem;
-      margin-left: 3rem;
-      height: 1.5rem;
-      width: 130rem;
-    }
-    :focus {
-      outline: 0.5rem solid transparent;
-    }
+    justify-content: center;
+    width: 80%;
+    margin: 2rem auto;
   }
-  .form__search-input-wrap:focus-within {
-    box-shadow: 0 0 10px #a8e9b5;
+
+  .input-alert__wrap {
+    flex-direction: column;
+    width: 100%;
   }
+
+  .form__search-input-wrap,
+  .form__input-date__wrap {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+  }
+
+  .form__search-input-wrap > input,
+  .form__input-date__wrap > input {
+    width: calc(18rem - 4rem);
+    height: 2rem;
+    padding: 0.2rem 0;
+  }
+
   .button {
     position: absolute;
-    height: 4rem;
-    width: 1.8rem;
-    left: 15rem;
-    top: 0.6rem;
-    border: 0.1rem solid transparent;
-    background-color: transparent;
-    background-image: url('/public/images/search.svg');
-    background-repeat: no-repeat;
+    left: auto;
+    width: 1.5rem;
+    height: 1.5rem;
   }
-  .form__input-date__wrap {
-		border: 0.15rem solid rgba(64, 181, 140, 0.603);
-		border-radius: 3rem;
-    > input[type='date'] {
-      background-color: #fefefe;
-			width: 9rem;
-			border: 0.15rem solid transparent;
-			border-radius: 3rem;
-			padding: 0.6rem 0.5rem;
-    }
-    > input[type='date']::before {
-      content: attr(placeholder);
-			color: #7e7b7b;
-			text-align: center;
-      width: 100%;
-      height: 100%;
-    }
-    > input[type='date']:focus{
-      outline: 0.1rem solid transparent;
-    }
+
+  .search-input__alert,
+  .search-input__date-alert {
+    left: 1rem;
+    top: 3rem;
   }
 }

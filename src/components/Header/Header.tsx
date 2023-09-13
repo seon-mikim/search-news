@@ -1,9 +1,9 @@
 import React from 'react'
 import SearchBar from './SearchBar'
-
+import classes from './Header.module.css'
 const Header = () => {
 	return (
-		<div><SearchBar/></div>
+		<header className={classes['header'] }><SearchBar/></header>
 	)
 }
 

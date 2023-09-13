@@ -3,7 +3,7 @@ import NewsCardList from '@components/NewsCardList/NewsCardList';
 const MainPage = () => {
   return (
     <>
-      <NewsCardList />;
+      <NewsCardList />
     </>
   );
 };
